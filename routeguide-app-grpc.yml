@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: routeguide-app-server
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: routeguide-app-server
+      env: default
+  template:
+    metadata:
+      labels:
+        app: routeguide-app-server
+        env: default
+    spec:
+      containers:
+      - name: app
+        image: glindsell/routeguide-app
+        ports:
+        - containerPort: 10000
